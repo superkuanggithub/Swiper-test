@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<!---->
+<head>
+    <meta charset="utf-8">
+
+    <title>Just for test</title>
+
+    <!--mobile web-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="swiper.css">
+
+    <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    div.div-content{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
+    div.div-content::before{
+        content:attr(id);
+        text-align: center;
+    }
+    /*description*/
+    div.div-content > div.history-description {
+        grid-row: 4;
+        width: 100%;
+        height: 200px;
+        margin:0;
+        position:relative;
+        overflow: hidden;
+    }
+        /*article*/
+        div.div-content > div.history-description > article {
+            height:auto;
+            overflow:hidden;
+            /* position:relative; */
+        }
+            div.div-content > div.history-description > article > p {
+                line-height:48px;
+                font-size:27px;
+                text-align:justify;
+                margin:0px;
+            }
+            
+            /*fold-toggle*/
+            div.div-content > div.history-description > article > a.fold-toggle{
+                visibility:hidden;
+                /*......*/
+                width: 100%;
+                text-align: center;
+                padding-top: 30px;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 40px, white);
+            }
+            div.div-content > div.history-description > article > a.fold-toggle.unfold{
+                position: absolute;
+                bottom: 0px;
+                right: 0;
+                -webkit-transition: -webkit-transform 0.3s;
+                transition: transform 0.3s ease-in-out;
+            }
+            div.div-content > div.history-description > article > a.fold-toggle.fold{
+                position: static;
+                opacity: 0;
+                -webkit-transition: opacity 0.3s;
+                transition: opacity 0.3s;
+            }
+            div.div-content > div.history-description > article > a.fold-toggle.unfold::before{
+                content:'Click to unfold'
+            }
+        
+        /*text overflowed*/
+        div.div-content > div.history-description > article.overflowed {
+            /* text-overflow: ellipsis; */
+        }
+        div.div-content > div.history-description > article.overflowed > a.fold-toggle{
+            visibility: visible;
+        }
+        div.div-content > div.history-description > article.overflowed.unfolded{
+            overflow: scroll;
+            height: 100%;
+            background: red;
+            /* padding-right:15px; */
+        }
+            /* div.div-content > div.history-description > article.overflowed.unfolded > a.fold-toggle{
+            } */
+            div.div-content > div.history-description > article.overflowed.unfolded > a.fold-toggle.unfold{
+                -webkit-transform: translateY(100%) translateY(20px);
+                transform: translateY(100%) translateY(20px);
+            }
+            div.div-content > div.history-description > article.overflowed.unfolded > a.fold-toggle.fold{
+                opacity: 1;
+            }
+            div.div-content > div.history-description > article.overflowed.unfolded > a.fold-toggle.fold::before{
+                content:'Click to fold'
+            }
+        /*article end*/
+    /*description end*/
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="div-content" id="div1">
+                    <div class="history-description adaption-fr">
+                        <article class="overflowed">
+                            <p>南宋年间，彭大雅帅重庆时，为抗击蒙（元）铁骑侵犯，将以前的板夯土城墙改建为坚固的石基砖墙结构城墙。彭大雅修的重庆城，至少已有洪崖门、千厮门、太平门、薰风门（南纪门前身）、镇西门（通远门前身）等五门。为抵抗外族入侵，重庆城的防御壁垒再一次得到巩固。</p>
+                            <p>后几年，余玠设制司于金碧山下重庆府衙，利用四川地势，以重庆为统帅部，以前城垣为防御重点，借助长江天堑，加固城防，建立山城防御体系。</p>
+                            <a class="fold-toggle unfold"></a>
+                            <a class="fold-toggle fold"></a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="div-content" id="div2"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="div-content" id="div3"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="div-content" id="div4">
+                    <div class="history-description adaption-fr">
+                        <article class="overflowed">
+                            <p>南宋年间，彭大雅帅重庆时，为抗击蒙（元）铁骑侵犯，将以前的板夯土城墙改建为坚固的石基砖墙结构城墙。彭大雅修的重庆城，至少已有洪崖门、千厮门、太平门、薰风门（南纪门前身）、镇西门（通远门前身）等五门。为抵抗外族入侵，重庆城的防御壁垒再一次得到巩固。</p>
+                            <p>后几年，余玠设制司于金碧山下重庆府衙，利用四川地势，以重庆为统帅部，以前城垣为防御重点，借助长江天堑，加固城防，建立山城防御体系。</p>
+                            <a class="fold-toggle unfold"></a>
+                            <a class="fold-toggle fold"></a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+
+    </div>
+    <!-- Swiper JS -->
+    <script src="swiper.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: true
+        });
+    </script>
+    <script>
+        function ForeachLoop(myArray, myFunc){
+            myCount = myArray['length'];
+            for(var i = 0; i < myCount; i++){
+                myFunc(myArray[i]);
+            }
+        };
+
+        //add click event handler for .fold-toggle
+        var FoldInit = function(){
+            var myToggle_Array = document.getElementsByClassName('fold-toggle');
+
+            ForeachLoop(myToggle_Array, function(element){
+                element.addEventListener('click', function(){
+                    var myArticle = this.parentNode;
+                    //change the class of article
+                    myArticle.classList.toggle('unfolded');
+                });
+            });
+        };
+
+        FoldInit();
+    </script>
+</body>
+</html>
